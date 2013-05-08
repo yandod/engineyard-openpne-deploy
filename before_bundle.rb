@@ -4,8 +4,8 @@ if !Dir.exist?(shared_path + "/config/OpenPNE.yml") then
 end
 
 # prepare shared files
-run "ln -s #{shared_path}/config/OpenPNE.yml #{release_path}/config/OpenPNE.yml"
-run "ln -s #{shared_path}/config/ProjectConfiguration.class.php #{release_path}/config/ProjectConfiguration.class.php"
+run "cp #{shared_path}/config/OpenPNE.yml #{release_path}/config/OpenPNE.yml"
+run "cp #{shared_path}/config/ProjectConfiguration.class.php #{release_path}/config/ProjectConfiguration.class.php"
 
 # set timezone in php.ini
 sudo "echo 'date.timezone = Asia/Tokyo' > /etc/php/cgi-php5.4/ext-active/timezone.ini"
