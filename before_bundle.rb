@@ -17,18 +17,18 @@ sudo "echo 'allow_url_fopen = On' > /etc/php/cgi-php5.4/ext-active/allow_url.ini
 sudo "echo 'allow_url_fopen = On' > /etc/php/cli-php5.4/ext-active/allow_url.ini"
 sudo "echo 'allow_url_fopen = On' > /etc/php/fpm-php5.4/ext-active/allow_url.ini"
 
-run "echo \"    location ~ \.php($|/) {
-        try_files $uri =404;
+run "echo \"    location ~ \.php(\$|/) {
+        try_files \$uri =404;
  
-        set $path_info \"/\";
+        set \$path_info \"/\";
  
-        if ($uri ~ \"^(.+\.php)(\$|/)\") {
+        if (\$uri ~ \"^(.+\.php)(\$|/)\") {
             set \$script \$1;
         }
  
-        if ($uri ~ \"^(.+\.php)(/.+)\") {
-            set $script \$1;
-            set $path_info \$2;
+        if (\$uri ~ \"^(.+\.php)(/.+)\") {
+            set \$script \$1;
+            set \$path_info \$2;
         }
         include                     /etc/nginx/common/proxy.conf;
         include                     /etc/nginx/common/fcgi.conf;
