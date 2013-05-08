@@ -17,29 +17,29 @@ sudo "echo 'allow_url_fopen = On' > /etc/php/cgi-php5.4/ext-active/allow_url.ini
 sudo "echo 'allow_url_fopen = On' > /etc/php/cli-php5.4/ext-active/allow_url.ini"
 sudo "echo 'allow_url_fopen = On' > /etc/php/fpm-php5.4/ext-active/allow_url.ini"
 
-run "echo \"    location ~ \.php(\$|/) {
-        try_files \$uri =404;
+run "echo \"    location ~ \\\.php(\\\$|/) {
+        try_files \\\$uri =404;
  
-        set \$path_info \"/\";
+        set \\\$path_info \"/\";
  
-        if (\$uri ~ \"^(.+\.php)(\$|/)\") {
-            set \$script \$1;
+        if (\\\$uri ~ \"^(.+\.php)(\\\$|/)\") {
+            set \\\$script \\\$1;
         }
  
-        if (\$uri ~ \"^(.+\.php)(/.+)\") {
-            set \$script \$1;
-            set \$path_info \$2;
+        if (\\\$uri ~ \"^(.+\.php)(/.+)\") {
+            set \\\$script \\\$1;
+            set \\\$path_info \\\$2;
         }
         include                     /etc/nginx/common/proxy.conf;
         include                     /etc/nginx/common/fcgi.conf;
         fastcgi_pass                upstream_#{app};
         fastcgi_index               index.php;
         fastcgi_intercept_errors    off;
-        fastcgi_param               SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
-        fastcgi_param               SERVER_NAME \$hostname;
-        fastcgi_param SCRIPT_FILENAME \$document_root\$script;
-        fastcgi_param SCRIPT_NAME \$script;
-        fastcgi_param PATH_INFO \$path_info;
+        fastcgi_param               SCRIPT_FILENAME \\\$document_root\\\$fastcgi_script_name;
+        fastcgi_param               SERVER_NAME \\\$hostname;
+        fastcgi_param SCRIPT_FILENAME \\\$document_root\\\$script;
+        fastcgi_param SCRIPT_NAME \\\$script;
+        fastcgi_param PATH_INFO \\\$path_info;
     }\" > /data/nginx/servers/#{app}/custom.conf"
 # set APC
 #sudo "echo 'extension=apc.so' > /etc/php/cgi-php5.4/ext-active/apc.ini"
