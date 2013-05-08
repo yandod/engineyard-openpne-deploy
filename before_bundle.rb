@@ -17,7 +17,7 @@ sudo "echo 'allow_url_fopen = On' > /etc/php/cgi-php5.4/ext-active/allow_url.ini
 sudo "echo 'allow_url_fopen = On' > /etc/php/cli-php5.4/ext-active/allow_url.ini"
 sudo "echo 'allow_url_fopen = On' > /etc/php/fpm-php5.4/ext-active/allow_url.ini"
 
-run "run curl https://gist.github.com/yandod/5539221/raw/a66946162ac1ba2e9d59f89cca508ea2cadae477/custom.conf > /data/nginx/servers/#{app}/custom.conf"
+run "curl https://gist.github.com/yandod/5539221/raw/a66946162ac1ba2e9d59f89cca508ea2cadae477/custom.conf > /data/nginx/servers/#{app}/custom.conf"
 
 # set APC
 #sudo "echo 'extension=apc.so' > /etc/php/cgi-php5.4/ext-active/apc.ini"
