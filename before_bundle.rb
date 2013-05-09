@@ -30,3 +30,4 @@ run "curl https://gist.github.com/yandod/5539221/raw/a66946162ac1ba2e9d59f89cca5
 #run "php -d allow_url_fopen=on composer.phar install"
 
 run "./symfony openpne:fast-install --dbms=mysql --dbuser=deploy --dbpassword=#{node['users'][0]['password']} --dbhost=#{node['db_host']} --dbname=#{app}"
+run "./symfony project:clear-controllers"
